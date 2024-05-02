@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ghost.fx_chat.LoginController">
+   <children>
+      <GridPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" alignment="CENTER" >
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" maxWidth="200.0"/>
+         </columnConstraints>
+         <Label text="Login" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.halignment="CENTER"/>
+         <TextField fx:id="usernameField" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
+         <PasswordField fx:id="passwordField" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.halignment="CENTER"/>
+
+         <HBox GridPane.columnIndex="0" GridPane.rowIndex="3" alignment="CENTER">
+            <Button fx:id="loginButton" text="Login" onAction="#LoginButtonClick"/>
+         </HBox>
+         <Label fx:id="goRegister" text="Register" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.halignment="RIGHT"/>
+      </GridPane>
+   </children>
+</AnchorPane>
