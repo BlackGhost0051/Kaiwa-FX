@@ -1,6 +1,8 @@
 package com.ghost.fx_chat;
 
+import com.ghost.fx_chat.Interface.SSEListener;
 import com.ghost.fx_chat.Model.Message;
+import com.ghost.fx_chat.Tasks.SSEManager;
 import com.ghost.fx_chat.Tasks.SendMessage;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -24,9 +26,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ChatController implements Initializable {
+public class ChatController implements Initializable, SSEListener {
 
     public String jwtKey = "";
+    private SSEManager sseManager;
 
     public ChatController() {
     }
@@ -34,6 +37,14 @@ public class ChatController implements Initializable {
     public void setJwtKey(String jwtKeyL) {
         this.jwtKey = jwtKeyL;
         fetchChatHistory("http://localhost:8080/history", jwtKey);
+
+        sseManager = new SSEManager("http://localhost:8080/sse", jwtKey, this );
+        sseManager.connect();
+    }
+
+    @Override
+    public void SSEMessage(String messageJSON) {
+        System.out.println("Message JSON = " + messageJSON);
     }
 
     @FXML

@@ -24,6 +24,8 @@ public class SSEManager {
         this.jwtKey = jwtKey;
         this.listener = listener;
         this.isRunning = false;
+
+        System.out.println("SSE jwtKey = " + jwtKey);
     }
 
     public void connect() {
