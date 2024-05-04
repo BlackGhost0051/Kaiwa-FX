@@ -45,6 +45,20 @@ public class ChatController implements Initializable, SSEListener {
     @Override
     public void SSEMessage(String messageJSON) {
         System.out.println("Message JSON = " + messageJSON);
+        try {
+            String jsonData = messageJSON.substring(5);
+
+            JSONObject messageObj = new JSONObject(jsonData);
+
+            String user = messageObj.getString("user");
+            String text = messageObj.getString("text");
+            String date = messageObj.getString("date");
+
+            Label messageLabel = new Label(user + ": " + text + " (" + date + ")");
+            Platform.runLater(() -> messageContainer.getChildren().add(messageLabel));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
