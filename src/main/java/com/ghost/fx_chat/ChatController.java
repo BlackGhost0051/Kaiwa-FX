@@ -30,6 +30,8 @@ public class ChatController implements Initializable, SSEListener {
 
     public String jwtKey = "";
     private SSEManager sseManager;
+    @FXML
+    private ScrollPane scrollPane;
 
     public ChatController() {
     }
@@ -56,6 +58,7 @@ public class ChatController implements Initializable, SSEListener {
 
             Label messageLabel = new Label(user + ": " + text + " (" + date + ")");
             Platform.runLater(() -> messageContainer.getChildren().add(messageLabel));
+            scrollPane.setVvalue(1.0);
         } catch (JSONException e) {
             e.printStackTrace();
         }
