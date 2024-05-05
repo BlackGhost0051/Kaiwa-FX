@@ -128,7 +128,7 @@ public class ChatController implements Initializable, SSEListener {
         try {
             JSONArray jsonArray = new JSONArray(historyJson);
 
-            for (int i = 0; i < jsonArray.length(); i++) {
+            for (int i = jsonArray.length() - 1; i >= 0; i--) {
                 JSONObject messageJson = jsonArray.getJSONObject(i);
 
                 String user = messageJson.getString("user");
