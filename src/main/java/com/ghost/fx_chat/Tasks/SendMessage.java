@@ -53,15 +53,6 @@ public class SendMessage extends Task<String> {
         super.succeeded();
         String result = getValue();
         System.out.println("AsyncTask Result: " + result);
-        showAlert(result);
-    }
-
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Message Status");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }
 

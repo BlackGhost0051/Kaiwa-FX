@@ -48,7 +48,7 @@ public class LoginTask extends Task<String> {
                 if (location != null) {
                     for (String loc : location) {
                         if (loc.contains("?error")) {
-                            return "ERROR";
+                            return null;
                         }
                     }
                 }
