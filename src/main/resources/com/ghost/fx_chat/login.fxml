@@ -15,7 +15,7 @@
          <PasswordField fx:id="passwordField" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.halignment="CENTER"/>
 
          <HBox GridPane.columnIndex="0" GridPane.rowIndex="3" alignment="CENTER">
-            <Button fx:id="loginButton" text="Login" onAction="#LoginButtonClick"/>
+            <Button fx:id="loginButton" text="Login" onAction="#LoginButtonClick" styleClass="btn,btn-primary"/>
          </HBox>
          <Label fx:id="goRegister" text="Register" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.halignment="RIGHT"/>
       </GridPane>
