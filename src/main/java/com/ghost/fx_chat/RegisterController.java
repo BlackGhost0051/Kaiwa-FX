@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.kordamp.bootstrapfx.BootstrapFX;
 
 public class RegisterController implements RegisterTaskListener {
 
@@ -37,9 +38,10 @@ public class RegisterController implements RegisterTaskListener {
 
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-                Scene registerScene = new Scene(root);
+                Scene loginScene = new Scene(root);
+                loginScene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
                 stage.setTitle("Login");
-                stage.setScene(registerScene);
+                stage.setScene(loginScene);
                 stage.show();
             } catch (Exception e) {
                 e.printStackTrace();

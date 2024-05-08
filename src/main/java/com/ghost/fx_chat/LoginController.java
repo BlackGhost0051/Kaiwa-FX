@@ -12,6 +12,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import okhttp3.*;
+import org.kordamp.bootstrapfx.BootstrapFX;
+
 import java.io.IOException;
 
 
@@ -38,6 +40,7 @@ public class LoginController {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
                 Scene registerScene = new Scene(root);
+                registerScene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
                 stage.setTitle("Register");
                 stage.setScene(registerScene);
                 stage.show();
@@ -69,7 +72,9 @@ public class LoginController {
                     chatController.setJwtKey(jwtKey);
 
                     Stage stage = (Stage) loginButton.getScene().getWindow();
-                    stage.setScene(new Scene(root));
+                    Scene chatScene = new Scene(root);
+                    chatScene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+                    stage.setScene(chatScene);
                     stage.setTitle("Chat");
                     stage.show();
                 } catch (IOException e) {
