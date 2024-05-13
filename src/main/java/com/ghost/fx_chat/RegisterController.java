@@ -24,7 +24,7 @@ public class RegisterController implements RegisterTaskListener {
     private Button registerButton;
 
     @FXML
-    public Label goLogin;
+    public Button goLogin;
 
 
     @FXML
@@ -42,6 +42,12 @@ public class RegisterController implements RegisterTaskListener {
                 stage.show();
             } catch (Exception e) {
                 e.printStackTrace();
+            }
+        });
+
+        passwordField.setOnKeyPressed(event -> {
+            if (event.getCode().toString().equals("ENTER")) {
+                RegisterButtonClick();
             }
         });
     }
@@ -63,6 +69,7 @@ public class RegisterController implements RegisterTaskListener {
             showAlert("Registration successful!");
         } else {
             System.out.println("Registration failed with response code: " + code);
+            showAlert("Registration failed with response code: " + code);
         }
     }
 

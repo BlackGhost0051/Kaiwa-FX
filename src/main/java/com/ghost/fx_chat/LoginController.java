@@ -30,7 +30,7 @@ public class LoginController {
     private Button loginButton;
 
     @FXML
-    public Label goRegister;
+    public Button goRegister;
 
     @FXML
     public void initialize() {
@@ -47,6 +47,12 @@ public class LoginController {
                 stage.show();
             } catch (Exception e) {
                 e.printStackTrace();
+            }
+        });
+
+        passwordField.setOnKeyPressed(event -> {
+            if (event.getCode().toString().equals("ENTER")) {
+                LoginButtonClick();
             }
         });
     }

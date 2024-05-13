@@ -4,6 +4,8 @@ import com.ghost.fx_chat.Interface.SSEListener;
 import com.ghost.fx_chat.Model.Message;
 import com.ghost.fx_chat.Tasks.SSEManager;
 import com.ghost.fx_chat.Tasks.SendMessage;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -11,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
+import javafx.util.Duration;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,6 +45,8 @@ public class ChatController implements Initializable, SSEListener {
 
         sseManager = new SSEManager("http://localhost:8080/sse", jwtKey, this );
         sseManager.connect();
+
+        scrollToBottom();
     }
 
     @Override
@@ -57,11 +62,23 @@ public class ChatController implements Initializable, SSEListener {
             String date = messageObj.getString("date");
 
             Label messageLabel = new Label(user + ": " + text + " (" + date + ")");
-            Platform.runLater(() -> messageContainer.getChildren().add(messageLabel));
-            scrollPane.setVvalue(1.0);
+            Platform.runLater(() -> {
+                messageContainer.getChildren().add(messageLabel);
+
+                scrollToBottom();
+            });
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void scrollToBottom() {
+        // Delay scroll to bottom
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(100), // Delay for 100 milliseconds
+                ae -> scrollPane.setVvalue(1.0)
+        ));
+        timeline.play();
     }
 
     @FXML
@@ -90,6 +107,12 @@ public class ChatController implements Initializable, SSEListener {
                 new Thread(sendMessageTask).start();
 
                 messageInput.clear();
+            }
+        });
+
+        messageInput.setOnKeyPressed(event -> {
+            if (event.getCode().getName().equals("Enter")) {
+                sendMessageBtn.fire();
             }
         });
     }

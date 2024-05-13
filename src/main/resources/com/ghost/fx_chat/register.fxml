@@ -1,23 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.text.Text?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ghost.fx_chat.RegisterController">
     <children>
-        <GridPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" alignment="CENTER" >
+        <GridPane alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" maxWidth="200.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" />
             </columnConstraints>
-            <Label text="Register" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.halignment="CENTER"/>
-            <TextField fx:id="usernameField" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
-            <PasswordField fx:id="passwordField" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.halignment="CENTER"/>
+            <Label text="Register" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+            <TextField fx:id="usernameField" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <GridPane.margin>
+               <Insets top="8.0" />
+            </GridPane.margin></TextField>
+            <PasswordField fx:id="passwordField" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <GridPane.margin>
+               <Insets top="8.0" />
+            </GridPane.margin></PasswordField>
 
-            <HBox GridPane.columnIndex="0" GridPane.rowIndex="3" alignment="CENTER">
-                <Button fx:id="registerButton" text="Register" onAction="#RegisterButtonClick" styleClass="btn,btn-primary"/>
+            <HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                <Button fx:id="registerButton" onAction="#RegisterButtonClick" styleClass="btn,btn-primary" text="Register">
+               <HBox.margin>
+                  <Insets right="8.0" />
+               </HBox.margin></Button>
+            <Button fx:id="goLogin" mnemonicParsing="false" styleClass="btn,btn-primary" text="Login" />
+            <GridPane.margin>
+               <Insets top="8.0" />
+            </GridPane.margin>
             </HBox>
-            <Label fx:id="goLogin" text="Login" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.halignment="RIGHT"/>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
         </GridPane>
     </children>
 </AnchorPane>

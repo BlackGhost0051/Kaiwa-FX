@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Start" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.ghost.fx_chat.FxApplication" />
+    <module name="Fx_Chat" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
