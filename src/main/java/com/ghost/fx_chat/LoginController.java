@@ -19,7 +19,7 @@ import java.io.IOException;
 
 
 public class LoginController {
-    private String URL = "http://localhost:8080";
+    private String URL = APIHelper.API_ROOT;
     @FXML
     private TextField usernameField;
 

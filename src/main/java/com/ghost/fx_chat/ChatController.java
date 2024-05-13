@@ -41,9 +41,9 @@ public class ChatController implements Initializable, SSEListener {
 
     public void setJwtKey(String jwtKeyL) {
         this.jwtKey = jwtKeyL;
-        fetchChatHistory("http://localhost:8080/history", jwtKey);
+        fetchChatHistory(APIHelper.API_ROOT + "/history", jwtKey);
 
-        sseManager = new SSEManager("http://localhost:8080/sse", jwtKey, this );
+        sseManager = new SSEManager(APIHelper.API_ROOT + "/sse", jwtKey, this );
         sseManager.connect();
 
         scrollToBottom();
@@ -99,7 +99,7 @@ public class ChatController implements Initializable, SSEListener {
         sendMessageBtn.setOnAction(event -> {
             String message = messageInput.getText().trim();
             if (!message.isEmpty()) {
-                SendMessage sendMessageTask = new SendMessage(message, jwtKey, "http://localhost:8080/send");
+                SendMessage sendMessageTask = new SendMessage(message, jwtKey, APIHelper.API_ROOT + "/send");
                 sendMessageTask.setOnSucceeded(e -> {
                     String result = sendMessageTask.getValue();
                     System.out.println(result);
