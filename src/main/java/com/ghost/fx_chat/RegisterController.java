@@ -13,7 +13,7 @@ import org.kordamp.bootstrapfx.BootstrapFX;
 
 public class RegisterController implements RegisterTaskListener {
 
-    private String URL = APIHelper.API_ROOT + "register";
+    private String URL = APIHelper.API_ROOT + "/register";
     @FXML
     private TextField usernameField;
 
