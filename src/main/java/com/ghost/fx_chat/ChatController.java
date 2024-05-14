@@ -9,14 +9,19 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.kordamp.bootstrapfx.BootstrapFX;
 
 
 import javax.net.ssl.SSLContext;
@@ -90,6 +95,9 @@ public class ChatController implements Initializable, SSEListener {
     @FXML
     private Button sendMessageBtn;
 
+    @FXML
+    private Button logoutBtn;
+
     private List<Message> messageList;
 
     @Override
@@ -115,6 +123,24 @@ public class ChatController implements Initializable, SSEListener {
                 sendMessageBtn.fire();
             }
         });
+
+        logoutBtn.setOnAction(event ->{
+            Scene scene = logoutBtn.getScene();
+            Stage stage = (Stage) scene.getWindow();
+
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+                Scene loginScene = new Scene(root);
+                loginScene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+                stage.setTitle("Login");
+                stage.setScene(loginScene);
+                stage.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+
     }
 
     private void fetchChatHistory(String url, String jwtToken) {
