@@ -31,6 +31,8 @@ public class LoginController {
 
     @FXML
     public Button goRegister;
+    @FXML
+    private Button exitBtn;
 
     @FXML
     public void initialize() {
@@ -54,6 +56,10 @@ public class LoginController {
             if (event.getCode().toString().equals("ENTER")) {
                 LoginButtonClick();
             }
+        });
+
+        exitBtn.setOnMouseClicked(event -> {
+            System.exit(0);
         });
     }
 

@@ -25,7 +25,8 @@ public class RegisterController implements RegisterTaskListener {
 
     @FXML
     public Button goLogin;
-
+    @FXML
+    private Button exitBtn;
 
     @FXML
     public void initialize() {
@@ -49,6 +50,10 @@ public class RegisterController implements RegisterTaskListener {
             if (event.getCode().toString().equals("ENTER")) {
                 RegisterButtonClick();
             }
+        });
+
+        exitBtn.setOnMouseClicked(event -> {
+            System.exit(0);
         });
     }
 
